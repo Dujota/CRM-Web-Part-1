@@ -3,16 +3,22 @@ require 'sinatra'
 
 ## GET REQUESTS TO THE SERVER
 # =====================================================================
-get '/' do
-  redirect to('home')
-end
-
-# REDIRECTS
-# =========================================================================
 get '/home' do
   erb :index
 end
 
+get '/contacts'do
+  @contacts = Contact.all
+  erb :contacts
+end
+# REDIRECTS
+# =========================================================================
+get '/' do
+  redirect to('home')
+end
+
+# Close database connection
+# -------------------------------------------------------------------------
 # this bit of code closes sinatra connection to database, if we dont add this then we will get timout error after 5 instances
 after do
   ActiveRecord::Base.connection.close
