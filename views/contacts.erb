@@ -2,6 +2,7 @@
 
 <h2>There are <strong> <%=@contacts.length%> </strong> contacts in the order they were saved:</h2>
 
+<!-- List out contact information  -->
 <ul class="contact_list">
   <% @contacts.each do |contact| %>
   <li class="each_contact">
@@ -9,3 +10,5 @@
   </li>
   <% end %>
 </ul>
+
+<a href="/">Home</a>
