@@ -1,0 +1,11 @@
+<h1>Here are my contacts</h1>
+
+<h2>There are <strong> <%=@contacts.length%> </strong> contacts in the order they were saved:</h2>
+
+<ul class="contact_list">
+  <% @contacts.each do |contact| %>
+  <li class="each_contact">
+    <%= " ID: #{contact.id} Name: #{contact.full_name} Email:#{contact.email} Note: #{contact.note}  " %>
+  </li>
+  <% end %>
+</ul>
