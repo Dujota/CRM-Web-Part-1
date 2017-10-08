@@ -12,12 +12,12 @@ class CRM
     "This application is called " + @name
   end
 
-#given to us in the exercise - basically always has the main menu running
+  # given to us in the exercise - basically always has the main menu running
   def main_menu
-    loop do #repeat indefinitely - inifinite loop
+    loop do # repeat indefinitely - inifinite loop
       print_main_menu # calls print_main_menu method
-      user_selected = gets.to_i #stores user input into a local variable
-      call_option(user_selected) #passes local variable to call_option mehtod below
+      user_selected = gets.to_i # stores user input into a local variable
+      call_option(user_selected) # passes local variable to call_option mehtod below
     end
   end
 
@@ -30,11 +30,11 @@ class CRM
     puts '[6] Exit'
     puts 'Enter a number: '
   end
-#We have two methods: print_main_menu prints out the menu and main_menu calls print_main_menu and then stores the user input (a number) into a variable called user_selected. That variable then gets passed as an argument into call_option
+  # We have two methods: print_main_menu prints out the menu and main_menu calls print_main_menu and then stores the user input (a number) into a variable called user_selected. That variable then gets passed as an argument into call_option
 
-# ---------------------------------------------------------------------------
+  # ------------------------------------------------------------------------
 
-# What do you think call_option should do? Remember, user_selected is going to be a number. What we want to do in this method is call other methods based on the number.
+  # What do you think call_option should do? Remember, user_selected is going to be a number. What we want to do in this method is call other methods based on the number.
   def call_option(user_selected)
     case user_selected
     when 1 then add_new_contact
@@ -42,11 +42,11 @@ class CRM
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then exit(0)  # can also do else exit as the last condition, up to programmer
+    when 6 then exit(0)# can also do else exit as the last condition, up to programmer
     end
   end
 
-#this is where we get the values for the contact class initializer we then pass in the values stored in the local variables into the contact.create function
+  # this is where we get the values for the contact class initializer we then pass in the values stored in the local variables into the contact.create function
   def add_new_contact
     print "Please enter First Name: "
     first_name = gets.chomp.to_s
@@ -69,22 +69,22 @@ class CRM
   end
 
   def modify_existing_contact
-    #first we need to get the inputs from the user so we know what to pass into the find class method.
+    # first we need to get the inputs from the user so we know what to pass into the find class method.
     print "Please enter the ID# of the contact you want to update: \n"
     id = gets.chomp.to_i
 
-    #once we know the ID value, we then need t know which attribute we want to pass into update method -- see method in contact.rb
+    # once we know the ID value, we then need t know which attribute we want to pass into update method -- see method in contact.rb
     print "What aspect(field) of the contact would you like to change?: \n"
     attribute = gets.chomp
 
-    #now that we have the attribute and id saved in variables, we need the final piece which will be the new value for the attribute, we are also passing this variable to the update method
+    # now that we have the attribute and id saved in variables, we need the final piece which will be the new value for the attribute, we are also passing this variable to the update method
     print "We will change #{attribute}. Please enter the new value: \n"
     value = gets.chomp
 
-    #now that we have all the info stored in variables, we can start using the mehtods
+    # now that we have all the info stored in variables, we can start using the mehtods
     contact = Contact.find(id)
     contact.update(attribute => value) # pulling method from contact file
-    #using a hash rocket as acctive record requires hash as the argument
+    # using a hash rocket as acctive record requires hash as the argument
 
   end
 
@@ -110,7 +110,7 @@ class CRM
     value = gets.chomp
 
     puts Contact.find_by(attribute => value).inspect # key => paid always
-    #if i use (attribute: name) it would not work, it goes to find attribute column name instead with the value name
+    # if i use (attribute: name) it would not work, it goes to find attribute column name instead with the value name
   end
 end
 
